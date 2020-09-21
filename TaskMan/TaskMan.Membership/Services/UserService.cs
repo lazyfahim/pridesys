@@ -92,7 +92,7 @@ namespace TaskMan.Membership.Services
                     user = await _userManager.FindByNameAsync(username);
                 if (user == null)
                     throw new Exception("username or email not found!!!");
-                var result = await _signInManager.CheckPasswordSignInAsync(user, password, true);
+                var result = await _signInManager.CheckPasswordSignInAsync(user, password, false);
 
                 if (result != null && result.Succeeded)
                 {
@@ -101,7 +101,8 @@ namespace TaskMan.Membership.Services
                     {
                         Subject = new ClaimsIdentity(new Claim[]
                         {
-                            new Claim(ClaimTypes.Name, user.Id.ToString())
+                            new Claim("UserId", user.Id.ToString()),
+                            new Claim(ClaimTypes.Name,user.UserName.ToString()),
                         }),
                         Expires = DateTime.UtcNow.AddDays(7),
                         SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
@@ -112,11 +113,11 @@ namespace TaskMan.Membership.Services
                 }
                 else
                 {
-                    throw new Exception("error");
+                    throw new Exception("Username or password is incorrect");
                 }
             }
             else
-                throw new Exception("error");
+                throw new Exception("error has happend in server");
         }
     }
 }

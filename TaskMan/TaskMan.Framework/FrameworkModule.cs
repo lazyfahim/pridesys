@@ -29,9 +29,9 @@ namespace TaskMan.Framework
             // Bind Implementation with the interfaces here
             builder.RegisterType<PostUnitOfWork>().As<IPostUnitOfWork>()
                 .InstancePerLifetimeScope();
-            builder.RegisterType<PostRepository>().As<IPostRepository>()
+            builder.RegisterType<TaskRepository>().As<ITaskRepository>()
                 .InstancePerLifetimeScope();
-            builder.RegisterType<PostService>().As<IPostService>()
+            builder.RegisterType<TaskService>().As<ITaskService>()
                 .InstancePerLifetimeScope();
 
             builder.RegisterType<FrameworkDataSeeder>(); // For Running Migration of Framework & Seeding Data if required

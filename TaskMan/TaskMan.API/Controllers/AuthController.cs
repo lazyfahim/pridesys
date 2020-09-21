@@ -37,8 +37,16 @@ namespace TaskMan.API.Controllers
         public async Task<IActionResult> Login(LoginDTO logindto)
         {
             var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Key"]);
-            var token  = await _userService.GetToken(logindto.UserName, logindto.PassWord, key);
-            return Ok(token);
+            try
+            {
+                var token = await _userService.GetToken(logindto.UserName, logindto.PassWord, key);
+                return Ok(new { succeeded=true, token = token});
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message.ToString());
+            }
+            
         }
 
         [HttpPost]

@@ -8,6 +8,6 @@ namespace TaskMan.Framework.UOW
 {
     public interface IPostUnitOfWork
     {
-        public IPostRepository PostRepository { get; }
+        public ITaskRepository PostRepository { get; }
     }
 }

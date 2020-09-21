@@ -6,8 +6,8 @@ using TaskMan.Framework.Entities;
 
 namespace TaskMan.Framework.Services
 {
-    public interface IPostService
+    public interface ITaskService
     {
-        (IList<Post>, int, int) GetPosts(int pageNum, string searchText);
+        (IList<Task>, int, int) GetPosts(int pageNum, string searchText);
     }
 }

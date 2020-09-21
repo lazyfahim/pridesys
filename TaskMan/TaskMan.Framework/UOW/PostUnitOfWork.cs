@@ -10,11 +10,11 @@ namespace TaskMan.Framework.UOW
 {
     public class PostUnitOfWork : UnitOfWork, IPostUnitOfWork
     {
-        public PostUnitOfWork(FrameworkContext context, IPostRepository postRepository) : base(context)
+        public PostUnitOfWork(FrameworkContext context, ITaskRepository postRepository) : base(context)
         {
             PostRepository = postRepository;
         }
 
-        public IPostRepository PostRepository { get; private set; }
+        public ITaskRepository PostRepository { get; private set; }
     }
 }

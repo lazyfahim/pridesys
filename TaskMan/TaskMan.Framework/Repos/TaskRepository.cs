@@ -7,9 +7,9 @@ using TaskMan.Framework.Entities;
 
 namespace TaskMan.Framework.Repos
 {
-    public class PostRepository:Repository<Post,int,FrameworkContext>,IPostRepository
+    public class TaskRepository:Repository<Task,int,FrameworkContext>,ITaskRepository
     {
-        public PostRepository(FrameworkContext context):base(context)
+        public TaskRepository(FrameworkContext context):base(context)
         {
         }
     }

@@ -7,7 +7,7 @@ using TaskMan.Framework.Entities;
 
 namespace TaskMan.Framework.Repos
 {
-    public interface IPostRepository : IRepository<Post, int, FrameworkContext>
+    public interface ITaskRepository : IRepository<Task, int, FrameworkContext>
     {
     }
 }
