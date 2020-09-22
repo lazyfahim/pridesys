@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="card" >
+        <div class="card-body">
+          <h5 class="card-title">Your tasks to do</h5>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+              <tr>
+                <th>Name</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Assigned By</th>
+              </tr>
+              </thead>
+              <tbody class="menu-list">
+              <tr *ngFor="let task of tasks">
+                <a routerLink="/admin/task/details/{{task.id}}" ><td>{{task.name}}</td></a>
+                <td>{{task.startDate}}</td>
+                <td>{{task.endDate}}</td>
+                <td>{{task.userName}}</td>
+              </tr>
+              </tbody>
+            </table>
+            <ngb-pagination  [collectionSize]="totalPage" [(page)]="pagenumber"  [pageSize]="10" (pageChange)="loadPage(pagenumber)" aria-label="Default pagination" class="pagination-primary"></ngb-pagination>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

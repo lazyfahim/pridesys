@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="card" >
+        <div class="card-body">
+          <pre><h5 class="card-title">All Users</h5> <a routerLink="/register" class="btn btn-dark">Create User</a></pre>
+
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Phone</th>
+              </tr>
+              </thead>
+              <tbody class="menu-list">
+              <tr *ngFor="let user of users">
+                <td>{{user.userName}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.address}}</td>
+                <td>{{user.phoneNumber}}</td>
+              </tr>
+              </tbody>
+            </table>
+            <ngb-pagination  [collectionSize]="totalPage" [(page)]="pagenumber"  [pageSize]="10" (pageChange)="loadPage(pagenumber)" aria-label="Default pagination" class="pagination-primary"></ngb-pagination>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
