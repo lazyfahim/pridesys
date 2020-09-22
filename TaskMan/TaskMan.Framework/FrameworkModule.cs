@@ -27,7 +27,7 @@ namespace TaskMan.Framework
                 .InstancePerLifetimeScope();
 
             // Bind Implementation with the interfaces here
-            builder.RegisterType<PostUnitOfWork>().As<IPostUnitOfWork>()
+            builder.RegisterType<TaskUnitOfWork>().As<ITaskUnitOfWork>()
                 .InstancePerLifetimeScope();
             builder.RegisterType<TaskRepository>().As<ITaskRepository>()
                 .InstancePerLifetimeScope();

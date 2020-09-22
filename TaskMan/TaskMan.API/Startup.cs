@@ -16,6 +16,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using TaskMan.API.DTOS;
 using TaskMan.Framework;
 using TaskMan.Membership;
 using TaskMan.Membership.Contexts;
@@ -114,6 +115,12 @@ namespace TaskMan.API
                     ValidateAudience = false
                 };
             });
+            var configmap = new AutoMapper.MapperConfiguration(c =>
+            {
+                c.AddProfile(new ApplicationProfile());
+            });
+            var mapper = configmap.CreateMapper();
+            services.AddSingleton(mapper);
             services.AddAuthorization();
         }
 

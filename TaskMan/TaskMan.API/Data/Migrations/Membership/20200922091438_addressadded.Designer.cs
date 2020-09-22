@@ -10,8 +10,8 @@ using TaskMan.Membership.Contexts;
 namespace TaskMan.API.Data.Migrations.Membership
 {
     [DbContext(typeof(MemberShipContext))]
-    [Migration("20200920052642_init")]
-    partial class init
+    [Migration("20200922091438_addressadded")]
+    partial class addressadded
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -82,6 +82,9 @@ namespace TaskMan.API.Data.Migrations.Membership
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Company")
                         .HasColumnType("nvarchar(max)");

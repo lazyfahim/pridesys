@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="card" >
+        <div class="card-header">
+          <h5 class="card-title">{{task.name}}</h5>
+          <p>Start Date: {{task.startDate|date}}</p>
+          <p>End Date: {{task.endDate|date}}</p>
+          <p>Assigned By: {{task.userName}}</p>
+          <p>Assigned To: {{task.assignedTo}}</p>
+        </div>
+        <div class="card-body">
+          <div [innerHTML]="task.description | keepHtml:'html'">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

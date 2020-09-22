@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="card" >
+        <div class="card-body">
+          <h5 class="card-title">Add new Task</h5>
+          <form #taskForm = "ngForm"  (ngSubmit)="submit()">
+            <div class="form-group">
+              <label for="taskname">Task Name</label>
+              <input type="text" class="form-control" id="taskname" name="taskname" #taskname="ngModel" [(ngModel)]="task.Name" aria-describedby="emailHelp" placeholder="Task Name">
+            </div>
+            <div class="form-group">
+              <label for="taskdesc">Task Description</label>
+              <ckeditor id="taskdesc" [(ngModel)]="task.Description" name="taskdesc" #taskdesc="ngModel" data="<p>Hello, world!</p>"></ckeditor>
+            </div>
+            <div class="form-group">
+              <label for="startdate">Start Date</label>
+              <input type="datetime-local" [(ngModel)]="task.StartDate" name="startdate" #startdate = "ngModel" class="form-control" id="startdate"  >
+            </div>
+            <div class="form-group">
+              <label for="enddate">Start Date</label>
+              <input type="datetime-local" [(ngModel)]="task.EndDate" name="enddate" #enddate="ngModel" class="form-control" id="enddate"  >
+            </div>
+            <div class="form-group">
+              <label for="user">Assign To</label>
+              <select [(ngModel)]="task.AssignedToId" name="user" #user = "ngModel"  id="user" name="user">
+                <option *ngFor="let user of users|async"  value="{{user.id}}">{{user.userName}}</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

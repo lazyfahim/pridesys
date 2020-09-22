@@ -13,5 +13,9 @@ namespace TaskMan.Framework.Entities
         public User User { get; set; }
         public int AssignedToId { get; set; }
         public User AssignedTo { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
     }
 }

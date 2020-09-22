@@ -1,0 +1,75 @@
+<div class="container">
+  <div class="d-flex justify-content-center h-100">
+    <div class="card">
+      <div class="card-header">
+        <h3>Sign Up</h3>
+        <div class="d-flex justify-content-end social_icon">
+          <span><i class="fab fa-facebook-square"></i></span>
+          <span><i class="fab fa-google-plus-square"></i></span>
+          <span><i class="fab fa-twitter-square"></i></span>
+        </div>
+      </div>
+      <div class="card-body">
+        <form #registerForm = "ngForm"  (ngSubmit)="register(registerForm)" >
+          <div class="input-group form-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-user"></i></span>
+            </div>
+            <input  required type="text" class="form-control" placeholder="username" name="username" #username="ngModel" [(ngModel)]="model.username">
+          </div>
+          <div class="input-group form-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+            </div>
+            <input required type="email"  class="form-control" placeholder="email" name="email" #email="ngModel" [(ngModel)]="model.email">
+
+          </div>
+          <div class="input-group form-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-key"></i></span>
+            </div>
+            <input required type="password" name="password" #password="ngModel" [(ngModel)]="model.password" class="form-control" placeholder="password">
+          </div>
+          <div class="input-group form-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-key"></i></span>
+            </div>
+            <input required type="password" name="confirmpassword" #confirmpassword="ngModel" [(ngModel)]="model.confirmpassword" class="form-control" placeholder="confirmpassword">
+          </div>
+          <div class="input-group form-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-user"></i></span>
+            </div>
+            <input required type="text" class="form-control" placeholder="first name" name="firstName" #firstName="ngModel" [(ngModel)]="model.firstName">
+          </div>
+          <div class="input-group form-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-user"></i></span>
+            </div>
+            <input required type="text" class="form-control" placeholder="last name" name="lastName" #lastName="ngModel" [(ngModel)]="model.lastName">
+          </div>
+          <div class="input-group form-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-phone"></i></span>
+            </div>
+            <input required type="text" class="form-control" placeholder="mobile" name="lastName" #mobile="ngModel" [(ngModel)]="model.mobile">
+          </div>
+          <div class="input-group form-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-map-marker"></i></span>
+            </div>
+            <input required type="tel" class="form-control" placeholder="address" name="address" #address="ngModel" [(ngModel)]="model.address">
+          </div>
+          <div class="form-group">
+            <input type="submit" [disabled]="!registerForm.valid" value="Sign Up" class="btn float-right login_btn">
+          </div>
+        </form>
+      </div>
+      <div class="card-footer">
+        <div class="d-flex justify-content-center links">
+          Already have an account?<a routerLink="/login">Sign In</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

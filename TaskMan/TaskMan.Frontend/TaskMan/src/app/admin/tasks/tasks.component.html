@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="card" >
+        <div class="card-body">
+          <pre><h5 class="card-title">Task You have created</h5> <a routerLink="new" class="btn btn-dark">Create Task</a></pre>
+
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+              <tr>
+                <th>Name</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Assigned to</th>
+                <th>Action</th>
+              </tr>
+              </thead>
+              <tbody class="menu-list">
+              <tr *ngFor="let task of tasks">
+                <a [routerLink]="['details',task.id]" ><td>{{task.name}}</td></a>
+                <td>{{task.startDate}}</td>
+                <td>{{task.endDate}}</td>
+                <td>{{task.assignedTo}}</td>
+                <td>
+                  <pre> <a class="btn btn-primary" [routerLink]="['edit',task.id]" >Edit</a> |  <a (click)="delete(task.id)" class="btn btn-danger">Delete</a></pre>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+            <ngb-pagination  [collectionSize]="totalPage" [(page)]="pagenumber"  [pageSize]="10" (pageChange)="loadPage(pagenumber)" aria-label="Default pagination" class="pagination-primary"></ngb-pagination>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

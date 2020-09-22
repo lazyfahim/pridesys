@@ -16,5 +16,7 @@ namespace TaskMan.Membership.Services
         void EditProfilePicture(User user);
 
         Task<string> GetToken(string username, string password,byte[] key);
+        IList<User> GetUserListForDropDown(string username);
+        (IList<User>,int ,int) GetUsers(int page=1);
     }
 }

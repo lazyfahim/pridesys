@@ -20,5 +20,9 @@
     <ProjectReference Include="..\TaskMan.Framework\TaskMan.Framework.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Data\" />
+  </ItemGroup>
+
 
 </Project>

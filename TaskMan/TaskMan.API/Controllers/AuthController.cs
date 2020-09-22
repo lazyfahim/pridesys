@@ -6,6 +6,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using Autofac;
+using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -25,12 +26,14 @@ namespace TaskMan.API.Controllers
     {
         public readonly IConfiguration _configuration;
         private readonly IUserService _userService;
+        private readonly IMapper _mapper;
 
         public AuthController(IConfiguration config,
-            IUserService userService)
+            IUserService userService, IMapper mapper)
         {
             _configuration = config;
             _userService = userService;
+            _mapper = mapper;
         }
 
         [HttpPost]
@@ -53,11 +56,34 @@ namespace TaskMan.API.Controllers
         [Route("Register")]
         public async Task<IActionResult> Register(RegisterDTO dto)
         {
-            var res = await dto.Create();
-            if (res.Item1 == true)
-                return Ok();
-            else
-                return BadRequest(res.Item2);
+            try
+            {
+                var res = await dto.Create();
+                if (res.Item1 == true)
+                    return Ok();
+                else
+                    return BadRequest(res.Item2);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message.ToString());
+            }
+            
+        }
+        [HttpGet]
+        [Route("users")]
+        public async Task<IActionResult> GetUsers(int page=1)
+        {
+            try
+            {
+                var model =  _userService.GetUsers(page);
+                var dto = _mapper.Map<List<ShowUserDTO>>(model.Item1);
+                return Ok(new { succeeded = true, users = dto,total = model.Item2,totaldisplay = model.Item3 });
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(new { succeeded = false, error = ex.Message.ToString() });
+            }
         }
 
     }

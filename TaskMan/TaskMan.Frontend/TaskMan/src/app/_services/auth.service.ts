@@ -33,10 +33,19 @@ export class AuthService {
     this.username.next(this.jwthelper.decodeToken(token).unique_name);
     this.tst.success('Welcome ' + this.jwthelper.decodeToken(token).unique_name + '!!', 'Welcome');
     this.isloggedin.next(true);
-    this.router.navigateByUrl('/');
+    this.router.navigateByUrl('/admin');
   }
   isExpired(to: string){
     console.log('token is ' + to);
     return this.jwthelper.isTokenExpired(to);
   }
+  getUsers(page){
+    return this.http.get(this.baseUrl+'users?page='+page);
+  }
+    logout(){
+      localStorage.removeItem('token');
+      this.token.next(null);
+      this.isloggedin.next(false);
+      this.router.navigateByUrl('/login');
+    }
 }

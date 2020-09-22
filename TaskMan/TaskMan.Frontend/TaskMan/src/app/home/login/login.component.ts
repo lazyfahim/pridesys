@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
       this.toastservice.error("username and password cannot be null","error");
     else {
       this.authservice.login(this.model).subscribe(
-        (res)=>{
+        (res:any)=>{
           console.log(res);
           if(res.succeeded){
             localStorage.setItem('token',res.token);

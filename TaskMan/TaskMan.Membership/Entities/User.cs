@@ -18,6 +18,7 @@ namespace TaskMan.Membership.Entities
         public string Designation { get; set; }
         public string Company { get; set; }
         public string Website { get; set; }
+        public string Address { get; set; }
 
         public string ProfilePicture { get; set; }
 

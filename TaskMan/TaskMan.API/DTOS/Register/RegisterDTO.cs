@@ -18,9 +18,20 @@ namespace TaskMan.API.DTOS.Register
         [StringLength(30, ErrorMessage = "Must be between 5 and 30 characters", MinimumLength = 5)]
         public string UserName { get; set; }
         [Required(ErrorMessage = "PassWord is Required")]
-        [StringLength(100, ErrorMessage = "Must be between 5 and 100 characters", MinimumLength = 5)]
+        [StringLength(100, ErrorMessage = "Password Must be between 5 and 100 characters", MinimumLength = 5)]
         [DataType(DataType.Password)]
         public string PassWord { get; set; }
+        [Required(ErrorMessage = "FirstName is Required")]
+        [StringLength(100, ErrorMessage = "First Name Must be between 3 and 100 characters", MinimumLength = 3)]
+        public string FirstName { get; set; }
+        [Required(ErrorMessage = "LastName is Required")]
+        [StringLength(100, ErrorMessage = "Last Name Must be between 3 and 100 characters", MinimumLength = 3)]
+        public string LastName { get; set; }
+        [Phone]
+        [Required(ErrorMessage = "Phone Number is Required")]
+        public string Mobile { get; set; }
+        [Required(ErrorMessage = "Address is Required")]
+        public string Address { get; set; }
         public RegisterDTO(UserManager userManager):base(userManager)
         {
 
@@ -50,6 +61,10 @@ namespace TaskMan.API.DTOS.Register
             {
                 UserName = this.UserName,
                 Email = this.Email,
+                FirstName = this.FirstName,
+                LastName = this.LastName,
+                PhoneNumber = this.Mobile,
+                Address = this.Address
             };
             var result = await userManager.CreateAsync(user, this.PassWord);
             if (result.Succeeded)

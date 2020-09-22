@@ -63,6 +63,11 @@ namespace TaskMan.Membership.Services
             _userUnitOfWork.Save();
         }
 
+        public IList<User> GetUserListForDropDown(string username)
+        {
+            return this._userUnitOfWork.UserRepository.Get(x => x.UserName != username);
+        }
+
         public void EditProfilePicture(User user)
         {
             if (user == null)
@@ -118,6 +123,11 @@ namespace TaskMan.Membership.Services
             }
             else
                 throw new Exception("error has happend in server");
+        }
+
+        public (IList<User>,int ,int) GetUsers(int page=1)
+        {
+            return this._userUnitOfWork.UserRepository.GetDynamic(pageIndex:page,pageSize:10);
         }
     }
 }
